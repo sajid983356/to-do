@@ -120,3 +120,18 @@ body {
     text-decoration-thickness: 0.1rem;
     /* font-size: 3rem; */
 }
+
+
+@media (max-width: 767px) {
+
+#todo-form{
+    display: flex;
+    flex-direction: column;
+}
+.todo-p{
+    width: 200px;
+}
+.TodoWrapper-heading {
+    text-align: center;
+}
+}
