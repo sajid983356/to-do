@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #8758ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App {
+    height: 100vh;
+    /* border: 1px solid black; */
+}
+.TodoWrapper {
+    /* border: 1px solid red; */
+    padding: 2rem;
+    margin-top: 5rem;
+    border-radius: 5px;
+    background-color: #1A1A40;
+    /* background-color: grey; */
+}
+#todo-form {
+    width: 100%;
+    margin-bottom: 1rem;
+    /* border: 1px solid black; */
+    /* margin-top: 100px; */
+    /* align-items: center;
+    text-align: center; */
+
+}
+
+#todo-input {
+    background: none;
+    border: 1px solid #8758ff;
+    padding: 0.5rem 1rem;
+    width: 300px;
+    color: #fff;
+
+}
+
+#todo-button {
+    background-color: #8758ff;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    
+}
+.TodoWrapper-heading {
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.todo-p {
+    cursor: pointer;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    width: 300px;
+    /* border: 1px solid black; */
+}
+
+.TodoWrapper-sort-dropdown-label {
+
+    padding: 0.5rem;
+    background: none;
+    cursor: pointer;   
+}
+
+.TodoWrapper-sort-dropdown-label input {
+    cursor: pointer;
+    margin: 0 0.5rem;
+    transform: scale(1.5);
+}
+
+.TodoWrapper-sort-dropdown {
+    color: white;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.TodoWrapper-sort-dropdown-select {
+    background: none;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;   
+}
+
+
+.TodoWrapper-sort-dropdown-select >option {
+    background-color: #1A1A40;
+    cursor: pointer;
+    /* padding: 3rem; */
+}
+
+.todo-list {
+    background-color: #8758ff;
+    color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    padding: 0.5rem 0px;
+    width: 100%;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.icons {
+    margin-left: 1rem;
+    /* border: 1px solid red; */
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.completed {
+    text-decoration: line-through;
+    text-decoration-color: red;
+    text-decoration-thickness: 0.1rem;
+    /* font-size: 3rem; */
+}

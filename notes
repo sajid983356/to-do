@@ -1,0 +1,13 @@
+npx create-react-app .
+npm i uuid
+https://fontawesome.com/docs/web/use-with/react/
+
+npm i --save @fortawesome/react-fontawesome@latest
+npm i --save @fortawesome/fontawesome-svg-core
+# Free icons styles
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+
+Todo app:
+https://www.youtube.com/watch?v=LoYbN6qoQHA&ab_channel=OpeAfolabi
+
