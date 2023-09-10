@@ -32,7 +32,7 @@ body {
 
 }
 
-#todo-input {
+#todo-input, .todo-input {
     background: none;
     border: 1px solid #8758ff;
     padding: 0.5rem 1rem;
@@ -41,7 +41,7 @@ body {
 
 }
 
-#todo-button {
+#todo-button, .todo-button {
     background-color: #8758ff;
     border: none;
     padding: 0.5rem 1rem;
@@ -49,6 +49,7 @@ body {
     cursor: pointer;
     
 }
+
 .TodoWrapper-heading {
     color: white;
     margin-bottom: 2rem;
@@ -121,10 +122,18 @@ body {
     /* font-size: 3rem; */
 }
 
+.TodoForm {
+    margin-bottom: 0.5rem;
+}
+
+.todo-button {
+    background-color: lightslategrey;
+}
+
 
 @media (max-width: 767px) {
 
-#todo-form{
+#todo-form, .TodoForm {
     display: flex;
     flex-direction: column;
 }
@@ -133,5 +142,13 @@ body {
 }
 .TodoWrapper-heading {
     text-align: center;
+}
+
+.TodoForm {
+    margin-bottom: 0.5rem;
+}
+
+.todo-button {
+    background-color: lightslategrey;
 }
 }

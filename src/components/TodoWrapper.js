@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
-import { faL, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {v4 as uuidv4} from 'uuid';
+import TodoForm from './TodoForm';
+import TodoItem from './TodoItem';
 
 const TodoWrapper = () => {
 
     const [isSelected, setIsSelected] = useState(false);
     const [updateValue, setUpdateValue] = useState('');
-    const [value, setValue] = useState('');
+    const [task, setTask] = useState('');
     const [todos, setTodos] = useState(() => {
         const storedTodos = localStorage.getItem('todos1');
         return storedTodos ? JSON.parse(storedTodos) : [];
@@ -34,16 +33,16 @@ const TodoWrapper = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        let obj = {id: uuidv4(), task: value, completed: false, isEditing: false}
+        let obj = {id: uuidv4(), task: task, completed: false, isEditing: false}
     
         console.log("handleFormSubmit")
         setTodos([...todos, obj])
-        setValue('')
+        setTask('')
     }
 
     const handleInputSubmit = (event) => {
-        console.log("handleInputSubmit - setValue")
-        setValue(event.target.value);
+        console.log("handleInputSubmit - setTask")
+        setTask(event.target.value);
     }
 
     const deleteTodo = (id) => {
@@ -62,13 +61,12 @@ const TodoWrapper = () => {
     }
 
 
-    const handleSubmit = (e, id) => {
+    const updateTodo = (e, id) => {
         e.preventDefault()
-        console.log("handleSubmit")
         setTodos(todos.map(todo => todo.id === id ? {
             ...todo, task: updateValue, isEditing: !todo.isEditing
         }: todo))
-        setValue('')
+        setUpdateValue('')
     }
 
     const handleSortChange = (e) => {
@@ -126,28 +124,28 @@ const TodoWrapper = () => {
       <h1 className='TodoWrapper-heading'> Add your Todo List Here</h1>
 
       <form id="todo-form" onSubmit={handleFormSubmit} onChange={handleInputSubmit} >
-            <input type='text' id="todo-input" placeholder='What is the task today?' value={value}/>
+            <input type='text' id="todo-input" placeholder='What is the task today?' value={task}/>
             <button type='submit' id="todo-button" > Add Task </button>
       </form>
-      {/* {console.log("in return", todos)} */}
       {
         todos.map((todo, index)=> (
             todo.isEditing ? (
-                <form className='TodoForm' onSubmit={(e) => handleSubmit(e, todo.id)}>
-                    <input type='text' className='todo-input' 
-                    value={updateValue}
-                    placeholder='Update task'
-                    onChange={(e) => setUpdateValue(e.target.value)}
-                    />
-                    <button type='submit' className='todo-btn'> Update Task</button>
-                </form>
+                <TodoForm 
+                 key={todo.id}
+                 updateValue={updateValue}
+                 setUpdateValue={setUpdateValue}
+                 todo={todo}
+                 onSubmit={(e) => updateTodo(e, todo.id)}
+                />
             )
             : (
-                <div key={index} className='todo-list'>
-                <p  className={`${todo.completed ? 'completed': ""} todo-p`} onClick={ () => toggleComplete(todo.id)}>{todo.task}</p>
-                <FontAwesomeIcon className="icons" icon={faPenToSquare} onClick={ () => editTodo(todo.id)}/>
-                <FontAwesomeIcon className="icons" icon={faTrash} onClick={ () => deleteTodo(todo.id)} />
-                </div>
+                <TodoItem
+                key={todo.id}
+                todo={todo}
+                toggleComplete={() => toggleComplete(todo.id)}
+                editTodo={() => editTodo(todo.id)}
+                deleteTodo={() => deleteTodo(todo.id)}
+                />
             )
         ))
       }
