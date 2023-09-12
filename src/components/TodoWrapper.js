@@ -33,30 +33,24 @@ const TodoWrapper = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
 
-        let obj = {id: uuidv4(), task: task, completed: false, isEditing: false}
-    
-        console.log("handleFormSubmit")
-        setTodos([...todos, obj])
+        let newTodo = {id: uuidv4(), task: task, completed: false, isEditing: false}
+            setTodos([...todos, newTodo])
         setTask('')
     }
 
     const handleInputSubmit = (event) => {
-        console.log("handleInputSubmit - setTask")
         setTask(event.target.value);
     }
 
     const deleteTodo = (id) => {
-        console.log("deleteTodo")
-        setTodos(todos.filter( todo => todo.id != id))
+        setTodos(todos.filter( todo => todo.id !== id))
     }
 
     const editTodo = (id) => {
-        console.log("editTodo")
         setTodos(todos.map(todo => todo.id === id ? {...todo, isEditing: !todo.isEditing} : todo))
     }
 
     const toggleComplete = (id) => {
-        console.log("toggleComplete")
         setTodos(todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo))
     }
 
@@ -121,7 +115,7 @@ const TodoWrapper = () => {
                 CLEAR-ALL
              </div>
       </div>
-      <h1 className='TodoWrapper-heading'> Add your Todo List Here</h1>
+      <h1 className='TodoWrapper-heading'>Add your Todo List Here</h1>
 
       <form id="todo-form" onSubmit={handleFormSubmit} onChange={handleInputSubmit} >
             <input type='text' id="todo-input" placeholder='What is the task today?' value={task}/>
@@ -149,7 +143,6 @@ const TodoWrapper = () => {
             )
         ))
       }
-      {/* {console.log("test", todos)} */}
     </div>
   )
 }
